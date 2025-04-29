@@ -1,16 +1,4 @@
 stages:
-  split:
-    cmd: python src/data/data_split.py
-    deps:
-    - src/data/data_split.py
-    params:
-    - split
-    outs:
-    - data/processed_data/X_test.csv
-    - data/processed_data/X_train.csv
-    - data/processed_data/processed.csv
-    - data/processed_data/y_test.csv
-    - data/processed_data/y_train.csv
   normalize:
     cmd: python src/data/data_normalize.py
     deps:
@@ -55,3 +43,16 @@ stages:
     - metrics/scores.json
     params:
     - split
+  split:
+    cmd: python src/data/data_split.py
+    deps:
+    - src/data/data_split.py
+    params:
+    - split
+    outs:
+    - data/processed_data/X_test.csv
+    - data/processed_data/X_train.csv
+    - data/processed_data/processed.csv
+    - data/processed_data/y_test.csv
+    - data/processed_data/y_train.csv
+    - data/raw_data/raw.csv
